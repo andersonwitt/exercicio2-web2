@@ -1,27 +1,26 @@
-var form = document.querySelector("form");
-var snackbar = document.querySelector(".snackbar");
-const emails = ["leonardobrehm14@gmail.com", "andersonrw161196@gmail.com"];
+var form = document.querySelector("form")
+var snackbar = document.querySelector(".snackbar")
 
-function show_snack(message) {
-  snackbar.textContent = message;
-  snackbar.style.transition = "opacity 2s";
-  snackbar.style.opacity = 1;
-  setTimeout(function () {
-    snackbar.style.opacity = 0;
-  }, 5000);
+function show_snack(message){
+    snackbar.textContent = message
+    snackbar.style.transition = "opacity 2s"
+    snackbar.style.opacity = 1
+    setTimeout(function(){
+        snackbar.style.opacity = 0
+    }, 5000)
 }
 
-const validateUser = (email, password) =>
-  emails.includes(email) && password === "samsepiol";
+function validateUser(email, password){
+    // TODO
+    return true
+}
 
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
-  let email = document.querySelector("#email");
-  let password = document.querySelector("#password");
-  if (!validateUser(email.value, password.value)) {
-    show_snack("email ou senha inválido!");
-    return;
-  }
+form.addEventListener(function(event){
+    event.preventDefault()
+    let email = document.querySelector("#email")
+    let password = document.querySelector("#password")
 
-  form.submit();
-});
+    if(!validateUser(email, password)) return false
+
+    form.submit()
+})
